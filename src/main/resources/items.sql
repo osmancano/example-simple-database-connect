@@ -1,3 +1,5 @@
+CREATE SEQUENCE items_id_seq;
+
 CREATE TABLE helloworld.items
 (
     item_id bigint NOT NULL DEFAULT nextval('items_id_seq'::regclass),
