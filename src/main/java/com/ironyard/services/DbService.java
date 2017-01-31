@@ -16,10 +16,20 @@ public class DbService {
 
     public void truncate(String tablename){
         try {
-            DbService dbService = new DbService();
-            Connection con = dbService.getConnection();
+            Connection con = this.getConnection();
             Statement s = con.createStatement();
             s.execute("TRUNCATE "+tablename);
+        }catch(Throwable t){
+            t.printStackTrace();
+        }
+
+    }
+
+    public void restartSequence(String seqName){
+        try {
+            Connection con = this.getConnection();
+            Statement s = con.createStatement();
+            s.execute("ALTER SEQUENCE "+seqName+" RESTART");
         }catch(Throwable t){
             t.printStackTrace();
         }
